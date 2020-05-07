@@ -1,0 +1,39 @@
+@import "config";
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.r-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.r-header{
+  height: $r-header-height;
+  background-color: antiquewhite;
+}
+.r-content-container{
+  height: $r-content-container-height;
+  display: flex;
+  background-color: aqua;
+}
+.r-main{
+  height: 100%;
+  width: $r-main-width;
+  background-color: aquamarine;
+}
+.r-aside{
+  width: $r-aside-width;
+  background-color: bisque;
+}
+.r-content{
+  height: $r-main-content-height;
+}
+.r-footer{
+  height: $r-main-footer-height;
+  background-color: burlywood;
+}
