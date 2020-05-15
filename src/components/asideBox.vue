@@ -7,9 +7,10 @@
       </template>
       <el-menu-item-group>
         <template slot="title">折线图</template>
-        <el-menu-item index="1-1">highcharts</el-menu-item>
-        <el-menu-item index="1-2">echarts</el-menu-item>
-        <el-menu-item index="1-2">d3</el-menu-item>
+        <el-menu-item index="1-1" @click="jumpTo('highchart/line')">highcharts</el-menu-item>
+        <el-menu-item index="1-2" @click="jumpTo('echarts/line')">echarts</el-menu-item>
+        <el-menu-item index="1-4" @click="jumpTo('d3/test')">d3 test</el-menu-item>
+        <el-menu-item index="1-3" @click="jumpTo('d3/line')">d3</el-menu-item>
       </el-menu-item-group>
       <el-menu-item-group title="堆叠图">
         <el-menu-item index="1-1">highcharts</el-menu-item>
@@ -42,9 +43,19 @@
 </template>
 
 <script>
-    export default {
-        name: "aside"
+  export default {
+    name: "asideBox",
+    methods:{
+      jumpTo(path){
+        this.$router.push({
+          path:'/'+path,
+          query:{
+            t:new Date().getTime()
+          }
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

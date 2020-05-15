@@ -11,9 +11,21 @@ export default new Router({
       component: resolve => require(['../components/home.vue'], resolve),
       children:[
         {
-          path:'',
-          components:'',
-        }
+          path:'highchart/line',
+          component:resolve => require(['../components/highcharts/lineChart.vue'], resolve),
+        },
+        {
+          path:'echarts/line',
+          component:resolve => require(['../components/echarts/lineChart.vue'], resolve),
+        },
+        {
+          path:'d3/test',
+          component:resolve => require(['../components/d3/d3Test6.vue'], resolve),
+        },
+        {
+          path:'d3/line',
+          component:resolve => require(['../components/d3/lineChart.vue'], resolve),
+        },
       ]
     }
   ]

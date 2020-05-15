@@ -1,0 +1,132 @@
+<script>
+    const commonOption={
+      title:{
+        show:false,
+      },
+      legend:{
+        show:true,
+      },
+      toolbox:{
+        show:false,
+        top:'0',
+        showTitle:false,
+        tooltip:{
+          show:false,
+        },
+        feature:{
+          dataZoom:{
+            yAxisIndex:false
+          },
+          magicType:{
+            type:['stack']
+          },
+          // restore: {},
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        confine:false,
+        extraCssText:'z-index:1000;',
+        // formatter:null,
+        // position:null,
+      },
+      grid: {
+        top: 30,
+        left: 0,
+        right: 30,
+        containLabel: true,
+        bottom:8,//156
+      },
+      dataZoom: [{
+        type: 'slider',
+        show:false,
+        xAxisIndex: [0],
+        start: 0,
+        end: 100,
+        height:25,
+        bottom:10,//96
+        left:40,
+        right:48,
+      }],
+      xAxis: {
+        type: 'time',
+        // boundaryGap: false,//line-false; bar-true;
+        axisLabel: {
+          intervale: 0,
+          rotate: 0,
+        },
+        axisPointer: {//y轴上显示指针对应的值
+          show: true,
+        },
+        splitLine:{
+          show:false
+        }
+      },
+      yAxis: {
+        type: 'value',
+        splitLine:{
+          show:true
+        },
+        axisLabel: {
+          // formatter:null,
+        },
+      },
+      useUTC: false,//使用本地时间
+      series: [],
+    };
+    const mapOptions={
+      geo:{
+        map:'',
+
+        roam:'scale',//鼠标是否可以控制缩放
+        scaleLimit:{
+          min:0.7,
+          max:1.5
+        },
+        // center:[],//当前视角的中心点，用经纬度表示
+        label: { //控制显示地图名称
+          normal: {
+            show: true
+          },
+          emphasis: {
+            show: true
+          },
+        } ,
+        itemStyle:{
+          // areaColor:'lightgrey', //设置默认状态下地图颜色
+
+        },
+        emphasis:{
+          itemStyle: {
+            areaColor:'white'
+          }
+        },
+        left:0,
+        top:0,
+        right:0,
+        bottom:0,
+      },
+      tooltip : {
+        trigger: 'item',
+        type:'cross',
+        alwaysShowContent: false,
+        // backgroundColor: 'rgba(0,0,0,0.7)',
+        borderColor:'#ffffff',
+        borderRadius: 4,
+        borderWidth: 1,
+        padding: 0,
+      },
+    };
+    const chartTypes={
+      line:{name:'line',option:commonOption},
+      map:{name:'map',option:mapOptions},
+    };
+    export default {
+      getOption:function(type){
+        return Object.assign({},chartTypes[type].option);
+      },
+      setMap:function(map){
+        mapOptions.geo.map=map
+      },
+    }
+</script>

@@ -11,24 +11,45 @@ html,body{
   width: 100%;
   display: flex;
   flex-direction: column;
+  .r-header{
+    width: 100%;
+    height: $r-header-height;
+    position: fixed;
+    top: 0;
+  }
+  .r-content-container{
+    height: 100%;
+    width: 100%;
+    padding-top:$r-header-height;
+    display: flex;
+    .r-aside{
+      width: $r-aside-width;
+      height: 100%;
+      position: fixed;
+      left: 0;
+    }
+    .r-main{
+      height: 100%;
+      width: 100%;
+      padding-left:$r-aside-width ;
+      .r-content{
+        height: 100%;
+        width: 100%;
+        padding-bottom:$r-main-footer-height;
+        box-sizing: border-box;
+      }
+      .r-footer{
+        height: $r-main-footer-height;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        opacity: .1;
+      }
+    }
+  }
 }
-.r-header{
-  height: $r-header-height;
-}
-.r-content-container{
-  height: $r-content-container-height;
-  display: flex;
-}
-.r-main{
-  height: 100%;
-  width: $r-main-width;
-}
-.r-aside{
-  width: $r-aside-width;
-}
-.r-content{
-  height: $r-main-content-height;
-}
-.r-footer{
-  height: $r-main-footer-height;
+
+.chart-container{
+  height: calc(100% - 200px);
+  width: 100%;
 }
