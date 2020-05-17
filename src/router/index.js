@@ -24,7 +24,7 @@ export default new Router({
         },
         {
           path:'d3/line',
-          component:resolve => require(['../components/d3/lineChart.vue'], resolve),
+          component:resolve => require(['../components/d3/multLineChart.vue'], resolve),
         },
       ]
     }

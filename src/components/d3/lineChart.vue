@@ -39,32 +39,39 @@
       init:function(){
         let data=createLineDatas(this.dataNum,'line',this.dataGroups)[0];
         console.log(data)
-        let width=this.$el.querySelector('#chartContainer').clientWidth;
-        let height=this.$el.querySelector('#chartContainer').clientHeight;
 
+        let margin = {top: 20, right: 20, bottom: 30, left: 50};
+        let width=this.$el.querySelector('#chartContainer').clientWidth -margin.left -margin.right;
+        let height=this.$el.querySelector('#chartContainer').clientHeight - margin.top - margin.bottom;
 
-        let xScale=d3.scaleTime()
+        let xScale=d3.scaleTime() //x轴坐标轴
           .domain(d3.extent(data.data,function(d,i){return d[0]}))
           .range([0,width])
 
-        let yScale=d3.scaleLinear()
-          .domain(0,d3.max(data.data,function(d){return d[1]}))
+        let yScale=d3.scaleLinear()//y轴坐标轴
+          .domain([0,d3.max(data.data,function(d){return d[1]})])  //
           .range([height,0])
-
-        console.log(yScale(100))
 
         let valueLine=d3.line()
                         .x(function(d){return xScale(d[0])})
                         .y(function(d){return yScale(d[1])})
 
         let svg=d3.select('#chartContainer').append('svg')
-                    .attr('width',width)
-                    .attr('height',height)
-
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g").attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
         svg.append('path')
             .data([data.data])
             .attr('class','line')
             .attr('d',valueLine)
+
+        svg.append('g')
+          .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(xScale))
+
+        svg.append('g')
+            .call(d3.axisLeft(yScale))
       },
       dataNumChange:function(){
         this.init();
